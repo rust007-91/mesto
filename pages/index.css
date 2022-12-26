@@ -20,3 +20,10 @@
 @import "../blocks/profile/__description/profile__description.css";
 @import "../blocks/profile/__edit-button/profile__edit-button.css";
 @import "../blocks/profile/__add-button/profile__add-button.css";
+
+@import "../blocks/elements/elements.css";
+@import "../blocks/elements/__card/elements__card.css";
+@import "../blocks/elements/__card-image/elements__card-image.css";
+@import "../blocks/elements/__wrapper/elements__wrapper.css";
+@import "../blocks/elements/__title/elements__title.css";
+@import "../blocks/elements/__like/elements__like.css";
