@@ -1,0 +1,7 @@
+.elements__icon {
+    max-width: 22px;
+    height: 19px;
+    width: 100%;
+    background: url("../../../images/vector-icon.svg") center center no-repeat;
+    margin-left: 16px;
+}
