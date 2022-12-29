@@ -30,3 +30,13 @@
 
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__copy/footer__copy.css";
+
+@import "../blocks/popup/popup.css";
+@import "../blocks/popup/__container/popup__container.css";
+@import "../blocks/popup/__close/popup__close.css";
+
+@import "../blocks/form/form.css";
+@import "../blocks/form/__heading/form__heading.css";
+@import "../blocks/form/__edit-fieldset/form__edit-fieldset.css";
+@import "../blocks/form/__edit-input/form__edit-input.css";
+@import "../blocks/form/__submit-button/form__submit-button.css";

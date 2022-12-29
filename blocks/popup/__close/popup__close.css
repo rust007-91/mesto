@@ -1,0 +1,19 @@
+.popup__close {
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: url("../../../images/vector-popup_close.svg") center center no-repeat;
+    padding: 0;
+}
+
+@media screen and (max-width: 580px){
+    .popup__close {
+        width: 20px;
+        height: 20px;
+        right: 0;
+        top: -36px;
+    }
+}
