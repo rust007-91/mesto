@@ -5,3 +5,8 @@
     background: url("../../../images/vector-icon.svg") center center no-repeat;
     margin-left: 16px;
 }
+
+.elements__icon:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}

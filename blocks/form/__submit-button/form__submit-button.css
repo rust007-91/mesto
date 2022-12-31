@@ -1,6 +1,6 @@
 .form__submit-button {
     padding: 0;
-    margin: 48px 0 0 0;
+    margin: 48px 0 37px 0;
     border: none;
     width: 358px;
     height: 50px;
@@ -11,6 +11,11 @@
     line-height: 22px;
     text-align: center;
     color: #FFFFFF;
+}
+
+.form__submit-button:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 580px) {

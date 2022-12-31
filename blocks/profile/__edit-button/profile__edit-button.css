@@ -6,6 +6,11 @@
     background: url("../../../images/vector-edit_button.svg") center center no-repeat;
 }
 
+.profile__edit-button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 640px){
     .profile__edit-button {
         width: 18px;

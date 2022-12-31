@@ -6,6 +6,11 @@
     background: url("../../../images/vector-add_button.svg") center center no-repeat;
 }
 
+.profile__add-button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 640px){
     .profile__add-button {
         width: 282px;

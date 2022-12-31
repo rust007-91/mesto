@@ -10,6 +10,6 @@
 @media screen and (max-width: 580px) {
     .form__edit-fieldset {
         max-width: 238px;
-        padding-top: 75px;
+        margin-top: 75px;
     }
 }
