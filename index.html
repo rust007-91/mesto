@@ -12,86 +12,85 @@
     <div class="page__container">
         <header class="header">
             <img src="./images/mesto-logo.svg" alt="Логотип_название 'Место Россия" class="header__logo">
-            <div class="header__line"></div>
         </header>
         <main>
             <section class="profile">
                 <div class="profile__container">
-                    <div class="profile__avatar">
-                        <img src="./images/kusto-avatar.jpg" alt="Аватарка" class="profile__avatar-image">
-                    </div>
+                    <img src="./images/kusto-avatar.jpg" alt="Аватарка" class="profile__avatar-image">
                     <div class="profile__info">
-                        <div>
+                        <div class="profile__text-wrapper">
                             <h1 class="profile__title">Жак-Ив Кусто</h1>
                             <p class="profile__description">Исследователь океана</p>
                         </div>
-                        <button class="profile__edit-button"></button>
+                        <button class="profile__edit-button" type="button" aria-label="кнопка редактировать"></button>
                     </div>
                 </div>
-                <button class="profile__add-button"></button>
+                <button class="profile__add-button" type="button" aria-label="кнопака добавить"></button>
             </section>
-            <ul class="elements">
-                <li class="elements__card">
-                    <img src="./images/karachaevsk-grid.jpg" alt="Карачаевск" class="elements__card-image">
-                    <div class="elements__wrapper">
-                        <h2 class="elements__title">Карачаевск</h2>
-                        <div class="elements__icon elements__icon_active"></div>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/gora-elbrus-grid.jpg" alt="Гора Эльбрус" class="elements__card-image">
-                    <div class="elements__wrapper">
-                        <h2 class="elements__title">Гора Эльбрус</h2>
-                        <div class="elements__icon elements__icon_active"></div>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/dombay-grid.jpg" alt="Домбай" class="elements__card-image">
-                    <div class="elements__wrapper">
-                        <h2 class="elements__title">Домбай</h2>
-                        <div class="elements__icon elements__icon_active"></div>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/gora-elbrus-grid.jpg" alt="Гора Эльбрус" class="elements__card-image">
-                    <div class="elements__wrapper">
-                        <h2 class="elements__title">Гора Эльбрус</h2>
-                        <div class="elements__icon elements__icon_active"></div>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/dombay-grid.jpg" alt="Домбай" class="elements__card-image">
-                    <div class="elements__wrapper">
-                        <h2 class="elements__title">Домбай</h2>
-                        <div class="elements__icon elements__icon_active"></div>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/karachaevsk-grid.jpg" alt="Карачаевск" class="elements__card-image">
-                    <div class="elements__wrapper">
-                        <h2 class="elements__title">Карачаевск</h2>
-                        <div class="elements__icon elements__icon_active"></div>
-                    </div>
-                </li>
-            </ul>
+            <section class="elements">
+                <ul class="elements__list">
+                    <li class="elements__card">
+                        <img src="./images/karachaevsk-grid.jpg" alt="Карачаевск" class="elements__card-image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__title">Карачаевск</h2>
+                            <button type="button" class="elements__icon elements__icon_active"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img src="./images/gora-elbrus-grid.jpg" alt="Гора Эльбрус" class="elements__card-image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__title">Гора Эльбрус</h2>
+                            <button type="button" class="elements__icon elements__icon_active"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img src="./images/dombay-grid.jpg" alt="Домбай" class="elements__card-image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__title">Домбай</h2>
+                            <button type="button"  class="elements__icon elements__icon_active"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img src="./images/gora-elbrus-grid.jpg" alt="Гора Эльбрус" class="elements__card-image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__title">Гора Эльбрус</h2>
+                            <button type="button" class="elements__icon elements__icon_active"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img src="./images/dombay-grid.jpg" alt="Домбай" class="elements__card-image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__title">Домбай</h2>
+                            <button type="button" class="elements__icon elements__icon_active"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img src="./images/karachaevsk-grid.jpg" alt="Карачаевск" class="elements__card-image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__title">Карачаевск</h2>
+                            <button type="button" class="elements__icon elements__icon_active"></button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
         </main>
         <footer class="footer">
-            <div class="footer__copy">&copy; 2022. Руслан Роткин</div>
+            <p class="footer__copy">&copy; 2022. Руслан Роткин</p>
         </footer>
     </div>
-    <section class="popup">
+    <div class="popup">
         <div class="popup__container">
-            <form class="form">
-                <h2 class="form__heading">Редактировать профиль</h2>
-                <fieldset class="form__edit-fieldset">
-                    <input type="text" class="form__edit-input" name="heading" value="Жак-Ив Кусто">
-                    <input type="text" class="form__edit-input" name="desc" value="Исследователь океана">
+            <form class="popup__form" name="profile-form">
+                <h2 class="popup__form-heading">Редактировать профиль</h2>
+                <fieldset class="popup__form-fieldset">
+                    <input type="text" class="popup__input popup__input_type_name" name="heading">
+                    <input type="text" class="popup__input popup__input_type_job" name="desc">
                 </fieldset>
-                <button type="submit" class="form__submit-button">Сохранить</button>
+                <button type="submit" class="popup__form-submit">Сохранить</button>
             </form>
-            <button class="popup__close-button"></button>
+            <button class="popup__close" type="button" aria-label="кнопка закрыть форму"></button>
         </div>
-    </section>
+    </div>
 <script src="pages/index.js"></script>
 </body>
 </html>

@@ -6,22 +6,21 @@
 @import "../blocks/page/page.css";
 @import "../blocks/page/__container/page__container.css";
 
-
 @import "../blocks/header/header.css";
 @import "../blocks/header/__logo/header__logo.css";
-@import "../blocks/header/__line/header__line.css";
 
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/__container/profile__container.css";
-@import "../blocks/profile/__avatar/profile__avatar.css";
-@import "../blocks/profile/__info/profile__info.css";
 @import "../blocks/profile/__avatar-image/profile__avatar-image.css";
+@import "../blocks/profile/__info/profile__info.css";
+@import "../blocks/profile/__text-wrapper/profile__text-wrapper.css";
 @import "../blocks/profile/__title/profile__title.css";
 @import "../blocks/profile/__description/profile__description.css";
 @import "../blocks/profile/__edit-button/profile__edit-button.css";
 @import "../blocks/profile/__add-button/profile__add-button.css";
 
 @import "../blocks/elements/elements.css";
+@import "../blocks/elements/__list/elements__list.css";
 @import "../blocks/elements/__card/elements__card.css";
 @import "../blocks/elements/__card-image/elements__card-image.css";
 @import "../blocks/elements/__wrapper/elements__wrapper.css";
@@ -32,11 +31,11 @@
 @import "../blocks/footer/__copy/footer__copy.css";
 
 @import "../blocks/popup/popup.css";
+@import "../blocks/popup/_opened/popup__opened.css";
 @import "../blocks/popup/__container/popup__container.css";
-@import "../blocks/popup/__close/popup__close-button.css";
-
-@import "../blocks/form/form.css";
-@import "../blocks/form/__heading/form__heading.css";
-@import "../blocks/form/__edit-fieldset/form__edit-fieldset.css";
-@import "../blocks/form/__edit-input/form__edit-input.css";
-@import "../blocks/form/__submit-button/form__submit-button.css";
+@import "../blocks/popup/__close/popup__close.css";
+@import "../blocks/popup/__form/popup__form.css";
+@import "../blocks/popup/__form-heading/popup__form-heading.css";
+@import "../blocks/popup/__form-fieldset/popup__form-fieldset.css";
+@import "../blocks/popup/__input/popup__input.css";
+@import "../blocks/popup/__form-submit/popup__form-submit.css";

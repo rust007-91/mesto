@@ -1,21 +1,21 @@
-.popup__close-button {
+.popup__close {
     position: absolute;
     right: -40px;
     top: -40px;
     width: 32px;
     height: 32px;
     border: none;
-    background: url("../../../images/vector-popup_close.svg") center center no-repeat;
+    background: url("../../../images/vector-popup_close.svg") center center/cover no-repeat;
     padding: 0;
 }
 
-.popup__close-button:hover {
+.popup__close:hover {
     cursor: pointer;
     opacity: 0.6;
 }
 
 @media screen and (max-width: 580px){
-    .popup__close-button {
+    .popup__close {
         width: 20px;
         height: 20px;
         right: 0;

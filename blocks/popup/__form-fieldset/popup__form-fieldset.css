@@ -1,4 +1,4 @@
-.form__edit-fieldset {
+.popup__form-fieldset {
     max-width: 358px;
     border: none;
     padding: 0;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 580px) {
-    .form__edit-fieldset {
+    .popup__form-fieldset {
         max-width: 238px;
         margin-top: 75px;
     }

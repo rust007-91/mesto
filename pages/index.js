@@ -1,37 +1,50 @@
-const popup = document.querySelector('.popup');
-const popupCloseButton = popup.querySelector('.popup__close-button');
-let editInput = popup.querySelectorAll('.form__edit-input');
-const formElement = popup.querySelector('.form');
+const popupElement = document.querySelector('.popup');
+const popupCloseButtonElement = popupElement.querySelector('.popup__close');
+const formElement = popupElement.querySelector('.popup__form');
+let inputNameElement = popupElement.querySelector('.popup__input_type_name');
+let inputJobElement = popupElement.querySelector('.popup__input_type_job');
 
-const profile = document.querySelector('.profile');
-const editButton = profile.querySelector('.profile__edit-button');
-let profileTitle = profile.querySelector('.profile__title');
-let profileDesc = profile.querySelector('.profile__description');
+const profileElement = document.querySelector('.profile');
+const editButtonElement = profileElement.querySelector('.profile__edit-button');
+let profileTitleElement = profileElement.querySelector('.profile__title');
+let profileDescElement = profileElement.querySelector('.profile__description');
 
 
-editButton.addEventListener('click', function () {
-    popup.classList.add('popup_opened');
+editButtonElement.addEventListener('click', function () {
+    popupElement.classList.add('popup_opened');
 });
 
-popupCloseButton.addEventListener('click', function () {
-    popup.classList.remove('popup_opened');
-});
+const closeForm = function () {
+    popupElement.classList.remove('popup_opened');
+    formElement.reset();
+}
+popupCloseButtonElement.addEventListener('click', closeForm);
+
+
+// Получите значение полей profileTitle и profileDesc из элемента profile
+let profileNameText = profileTitleElement.textContent;
+let profileJobText = profileDescElement.textContent;
+
+// Установить значения из profile в атрубут value
+inputNameElement.setAttribute('value', profileNameText);
+inputJobElement.setAttribute('value', profileJobText);
 
 function handleFormSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-    let nameInput = editInput[0].value; // Получите значение полей jobInput и nameInput из свойства value
-    let jobInput = editInput[1].value;
+    // Получите значение полей jobInputElement и nameInputElement из свойства value
+    let inputName = inputNameElement.value;
+    let inputJob = inputJobElement.value;
 
     // Выберите элементы, куда должны быть вставлены значения полей
     // Вставьте новые значения с помощью textContent
-    profileTitle.textContent = nameInput;
-    profileDesc.textContent = jobInput;
-
-    console.log(nameInput);
-    console.log(jobInput);
+    profileTitleElement.textContent = inputName;
+    profileDescElement.textContent = inputJob;
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('submit', closeForm);
+
+

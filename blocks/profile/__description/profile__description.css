@@ -1,9 +1,12 @@
 .profile__description {
-    margin: 16px 0 0 0;
+    margin: 9px 0 0 0;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 640px){

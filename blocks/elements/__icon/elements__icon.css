@@ -4,6 +4,8 @@
     width: 100%;
     background: url("../../../images/vector-icon.svg") center center no-repeat;
     margin-left: 16px;
+    border: none;
+    padding: 0;
 }
 
 .elements__icon:hover {

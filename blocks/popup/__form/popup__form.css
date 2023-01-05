@@ -1,8 +1,7 @@
-.form {
+.popup__form {
     font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
     box-sizing: border-box;
     width: 430px;
-    min-height: 330px;
     background: #FFFFFF;
     border-radius: 10px;
     padding-left: 36px;
@@ -10,9 +9,8 @@
 }
 
 @media screen and (max-width: 580px) {
-    .form {
+    .popup__form {
         width: 282px;
-        min-height: 322px;
         padding-left: 25px;
     }
 }
