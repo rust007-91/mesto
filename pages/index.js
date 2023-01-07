@@ -12,6 +12,14 @@ let profileDescElement = profileElement.querySelector('.profile__description');
 
 editButtonElement.addEventListener('click', function () {
     popupElement.classList.add('popup_opened');
+
+    // Получите значение полей profileTitle и profileDesc из элемента profile
+    let profileNameText = profileTitleElement.textContent;
+    let profileJobText = profileDescElement.textContent;
+
+    // Установить значения из profile в атрубут value
+    inputNameElement.setAttribute('value', profileNameText);
+    inputJobElement.setAttribute('value', profileJobText);
 });
 
 const closeForm = function () {
@@ -19,14 +27,6 @@ const closeForm = function () {
 }
 popupCloseButtonElement.addEventListener('click', closeForm);
 
-
-// Получите значение полей profileTitle и profileDesc из элемента profile
-let profileNameText = profileTitleElement.textContent;
-let profileJobText = profileDescElement.textContent;
-
-// Установить значения из profile в атрубут value
-inputNameElement.setAttribute('value', profileNameText);
-inputJobElement.setAttribute('value', profileJobText);
 
 function handleFormSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
