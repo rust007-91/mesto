@@ -10,7 +10,7 @@ let profileTitleElement = profileElement.querySelector('.profile__title');
 let profileDescElement = profileElement.querySelector('.profile__description');
 
 
-editButtonElement.addEventListener('click', function () {
+const openForm = function () {
     popupElement.classList.add('popup_opened');
 
     // Получите значение полей profileTitle и profileDesc из элемента profile
@@ -18,14 +18,18 @@ editButtonElement.addEventListener('click', function () {
     let profileJobText = profileDescElement.textContent;
 
     // Установить значения из profile в атрубут value
-    inputNameElement.setAttribute('value', profileNameText);
-    inputJobElement.setAttribute('value', profileJobText);
-});
+    inputNameElement.value = profileNameText;
+    inputJobElement.value = profileJobText;
+};
 
 const closeForm = function () {
     popupElement.classList.remove('popup_opened');
 }
+
+editButtonElement.addEventListener('click', openForm);
 popupCloseButtonElement.addEventListener('click', closeForm);
+
+
 
 
 function handleFormSubmit (evt) {
