@@ -16,7 +16,6 @@ editButtonElement.addEventListener('click', function () {
 
 const closeForm = function () {
     popupElement.classList.remove('popup_opened');
-    formElement.reset();
 }
 popupCloseButtonElement.addEventListener('click', closeForm);
 
@@ -40,11 +39,10 @@ function handleFormSubmit (evt) {
     // Вставьте новые значения с помощью textContent
     profileTitleElement.textContent = inputName;
     profileDescElement.textContent = inputJob;
+
+    closeForm();
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);
-formElement.addEventListener('submit', closeForm);
-
-
