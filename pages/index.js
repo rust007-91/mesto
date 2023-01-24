@@ -10,27 +10,9 @@ let profileTitleElement = profileElement.querySelector('.profile__title');
 let profileDescElement = profileElement.querySelector('.profile__description');
 
 const elementsCardTemplate = document.querySelector('#elements__card').content;
-const elementsListElement = document.querySelector('.elements__list');
+const cardsContainer = document.querySelector('.elements__list');
 
-    // Клонируем содержимое тега template
-const CardElement = elementsCardTemplate.querySelector('.elements__card').cloneNode(true);
-
-    // Наполняем содержимым
-    CardElement.querySelector('.elements__card-image').src = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
-    CardElement.querySelector('.elements__card-image').alt = 'Архыз';
-    CardElement.querySelector('.elements__title').textContent = 'Архыз';
-
-    const CardElement = elementsCardTemplate.querySelector('.elements__card').cloneNode(true);
-
-    // Наполняем содержимым
-    CardElement.querySelector('.elements__card-image').src = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg';
-    CardElement.querySelector('.elements__card-image').alt = 'Челябинская область';
-    CardElement.querySelector('.elements__title').textContent = 'Челябинская область';
-
-    // Добавляем элемент на страницу
-    elementsListElement.append(CardElement);
-
-    // Добавление карточек
+// Добавление карточек
 const initialCards = [
     {
         name: 'Архыз',
@@ -57,6 +39,27 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+const createCard = (data) => {
+    // Клонируем содержимое тега template
+    const cardElement = elementsCardTemplate.querySelector('.elements__card').cloneNode(true);
+    // Наполняем содержимым
+    cardElement.querySelector('.elements__card-image').src = data.link;
+    cardElement.querySelector('.elements__card-image').alt = data.name;
+    cardElement.querySelector('.elements__title').textContent = data.name;
+
+    return cardElement;
+};
+
+const renderCard = (data) => {
+    // Помещаем карточку в контейнер вызовом creatCard
+    cardsContainer.append(createCard(data));
+};
+
+initialCards.forEach(function (item) {
+    // Добавляем элемент на страницу
+    renderCard(item);
+})
 
 const openForm = function () {
     popupElement.classList.add('popup_opened');
