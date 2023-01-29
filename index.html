@@ -25,61 +25,20 @@
                         <button class="profile__edit-button" type="button" aria-label="кнопка редактировать"></button>
                     </div>
                 </div>
-                <button class="profile__add-button" type="button" aria-label="кнопака добавить"></button>
+                <button class="profile__add-button" type="button" aria-label="кнопка добавить"></button>
             </section>
             <section class="elements">
                 <ul class="elements__list">
                     <template id="elements__card">
                         <li class="elements__card">
                             <img src="" alt="" class="elements__card-image">
+                            <button type="button" class="elements__delete"></button>
                             <div class="elements__wrapper">
                                 <h2 class="elements__title"></h2>
-                                <button type="button" class="elements__icon elements__icon_active"></button>
+                                <button type="button" class="elements__like"></button>
                             </div>
                         </li>
                     </template>
-<!--                    <li class="elements__card">-->
-<!--                        <img src="./images/karachaevsk-grid.jpg" alt="Карачаевск" class="elements__card-image">-->
-<!--                        <div class="elements__wrapper">-->
-<!--                            <h2 class="elements__title">Карачаевск</h2>-->
-<!--                            <button type="button" class="elements__icon elements__icon_active"></button>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="elements__card">-->
-<!--                        <img src="./images/gora-elbrus-grid.jpg" alt="Гора Эльбрус" class="elements__card-image">-->
-<!--                        <div class="elements__wrapper">-->
-<!--                            <h2 class="elements__title">Гора Эльбрус</h2>-->
-<!--                            <button type="button" class="elements__icon elements__icon_active"></button>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="elements__card">-->
-<!--                        <img src="./images/dombay-grid.jpg" alt="Домбай" class="elements__card-image">-->
-<!--                        <div class="elements__wrapper">-->
-<!--                            <h2 class="elements__title">Домбай</h2>-->
-<!--                            <button type="button"  class="elements__icon elements__icon_active"></button>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="elements__card">-->
-<!--                        <img src="./images/gora-elbrus-grid.jpg" alt="Гора Эльбрус" class="elements__card-image">-->
-<!--                        <div class="elements__wrapper">-->
-<!--                            <h2 class="elements__title">Гора Эльбрус</h2>-->
-<!--                            <button type="button" class="elements__icon elements__icon_active"></button>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="elements__card">-->
-<!--                        <img src="./images/dombay-grid.jpg" alt="Домбай" class="elements__card-image">-->
-<!--                        <div class="elements__wrapper">-->
-<!--                            <h2 class="elements__title">Домбай</h2>-->
-<!--                            <button type="button" class="elements__icon elements__icon_active"></button>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="elements__card">-->
-<!--                        <img src="./images/karachaevsk-grid.jpg" alt="Карачаевск" class="elements__card-image">-->
-<!--                        <div class="elements__wrapper">-->
-<!--                            <h2 class="elements__title">Карачаевск</h2>-->
-<!--                            <button type="button" class="elements__icon elements__icon_active"></button>-->
-<!--                        </div>-->
-<!--                    </li>-->
                 </ul>
             </section>
         </main>
@@ -87,17 +46,39 @@
             <p class="footer__copy">&copy; 2022. Руслан Роткин</p>
         </footer>
     </div>
-    <div class="popup">
+    <div class="popup popup_edit">
         <div class="popup__container">
-            <form class="popup__form" name="profile-form">
+            <form class="popup__form popup__form_edit" name="profile-form">
                 <h2 class="popup__form-heading">Редактировать профиль</h2>
-                <fieldset class="popup__form-fieldset">
-                    <input type="text" class="popup__input popup__input_type_name" name="heading" placeholder="Введите имя">
-                    <input type="text" class="popup__input popup__input_type_job" name="desc" placeholder="Введите род деятельности">
+                <fieldset class="popup__form-fieldset popup__form-fieldset_edit">
+                    <input type="text" class="popup__input popup__input_type_edit-name" name="heading" placeholder="Введите имя">
+                    <input type="text" class="popup__input popup__input_type_edit-job" name="desc" placeholder="Введите род деятельности">
                 </fieldset>
+
                 <button type="submit" class="popup__form-submit">Сохранить</button>
             </form>
-            <button class="popup__close" type="button" aria-label="кнопка закрыть форму"></button>
+            <button class="popup__close popup__close_edit" type="button" aria-label="кнопка закрыть попап"></button>
+        </div>
+    </div>
+    <div class="popup popup_add">
+        <div class="popup__container">
+            <form class="popup__form popup__form_add" name="profile-form">
+                <h3 class="popup__form-heading">Новое место</h3>
+                <fieldset class="popup__form-fieldset popup__form-fieldset_add">
+                    <input type="text" class="popup__input popup__input_type_add-name" name="heading" placeholder="Название">
+                    <input type="text" class="popup__input popup__input_type_add-img" name="desc" placeholder="Ссылка на картинку">
+                </fieldset>
+
+                <button type="submit" class="popup__form-submit">Создать</button>
+            </form>
+            <button class="popup__close popup__close_add" type="button" aria-label="кнопка закрыть попап"></button>
+        </div>
+    </div>
+    <div class="popup popup_img">
+        <div class="popup__container">
+            <img src="" alt="" class="popup__card-image">
+            <p class="popup__card-name"></p>
+            <button class="popup__close popup__close_img" type="button" aria-label="кнопка закрыть попап"></button>
         </div>
     </div>
 <script src="pages/index.js"></script>
