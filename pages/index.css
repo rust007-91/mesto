@@ -23,7 +23,8 @@
 @import "../blocks/elements/__list/elements__list.css";
 @import "../blocks/elements/__card/elements__card.css";
 @import "../blocks/elements/__card-image/elements__card-image.css";
-@import "../blocks/elements/__wrapper/elements__wrapper.css";
+@import "../blocks/elements/__wrapper-place/elements__wrapper-place.css";
+@import "../blocks/elements/__wrapper-flex/elements__wrapper-flex.css";
 @import "../blocks/elements/__title/elements__title.css";
 @import "../blocks/elements/__delete/elements__delete.css";
 @import "../blocks/elements/__like/elements__like.css";
@@ -41,5 +42,6 @@
 @import "../blocks/popup/__form-fieldset/popup__form-fieldset.css";
 @import "../blocks/popup/__input/popup__input.css";
 @import "../blocks/popup/__form-submit/popup__form-submit.css";
+@import "../blocks/popup/_img/popup_img.css";
 @import "../blocks/popup/__card-image/popup__card-image.css";
 @import "../blocks/popup/__card-name/popup__card-name.css";

@@ -10,7 +10,5 @@
     background: rgba(0, 0, 0, .5);
     visibility: hidden;
     opacity: 0;
-    -o-transition: visibility .5s, .5s linear;
-    -moz-transition: visibility .5s, .5s linear;
     transition: visibility .5s, .5s linear;
 }

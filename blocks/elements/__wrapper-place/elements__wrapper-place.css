@@ -1,0 +1,11 @@
+.elements__wrapper-place {
+
+    /*display: flex;*/
+    /*align-items: baseline;*/
+    /*justify-content: space-between;*/
+    /*margin: 22px 15px 0 21px;*/
+    /*padding: 0;*/
+    background: #FFFFFF;
+    height: 79px;
+    border-radius: 0 0 10px 10px;
+}

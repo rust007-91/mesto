@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
+    <script defer src="./pages/constants.js"></script>
+    <script defer src="./pages/index.js"></script>
 </head>
 <body class="page">
     <div class="page__container">
@@ -33,9 +35,11 @@
                         <li class="elements__card">
                             <img src="#" alt="" class="elements__card-image">
                             <button type="button" class="elements__delete"></button>
-                            <div class="elements__wrapper">
-                                <h2 class="elements__title"></h2>
-                                <button type="button" class="elements__like"></button>
+                            <div class="elements__wrapper-place">
+                                <div class="elements__wrapper-flex">
+                                    <h2 class="elements__title"></h2>
+                                    <button type="button" class="elements__like"></button>
+                                </div>
                             </div>
                         </li>
                     </template>
@@ -65,8 +69,8 @@
             <form class="popup__form popup__form_add" name="profile-form">
                 <h3 class="popup__form-heading">Новое место</h3>
                 <fieldset class="popup__form-fieldset popup__form-fieldset_add">
-                    <input type="text" class="popup__input popup__input_type_add-name" name="heading" placeholder="Название">
-                    <input type="text" class="popup__input popup__input_type_add-img" name="desc" placeholder="Ссылка на картинку">
+                    <input type="text" class="popup__input popup__input_type_add-name" name="heading" placeholder="Название" required>
+                    <input type="url" class="popup__input popup__input_type_add-img" name="desc" placeholder="Ссылка на картинку" required>
                 </fieldset>
 
                 <button type="submit" class="popup__form-submit">Создать</button>
@@ -81,6 +85,5 @@
             <button class="popup__close popup__close_img" type="button" aria-label="кнопка закрыть попап"></button>
         </div>
     </div>
-<script src="pages/index.js"></script>
 </body>
 </html>
