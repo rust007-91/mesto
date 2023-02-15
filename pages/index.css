@@ -41,7 +41,10 @@
 @import "../blocks/popup/__form-heading/popup__form-heading.css";
 @import "../blocks/popup/__form-fieldset/popup__form-fieldset.css";
 @import "../blocks/popup/__input/popup__input.css";
+@import "../blocks/popup/__input/__input_type/_error/popup__input_type_error.css";
+@import "../blocks/popup/__input/__input_type/_error-message/popup__input_type_error-message.css";
 @import "../blocks/popup/__form-submit/popup__form-submit.css";
+@import "../blocks/popup/__form-submit/_disabled/popup__form-submit_disabled.css";
 @import "../blocks/popup/_img/popup_img.css";
 @import "../blocks/popup/__card-image/popup__card-image.css";
 @import "../blocks/popup/__card-name/popup__card-name.css";

@@ -27,6 +27,7 @@ const addButtonElement = profileElement.querySelector('.profile__add-button');
 const elementsCardTemplate = document.querySelector('#elements__card').content.querySelector('.elements__card');
 const cardsContainer = document.querySelector('.elements__list');
 
+
                                                 // Добавление карточек
 const createCard = (data) => {
     // Клонируем содержимое тега template
@@ -37,18 +38,21 @@ const createCard = (data) => {
     cardImage.src = data.link;
     cardImage.alt = data.name;
     cardTitle.textContent = data.name;
+
     // Удалить карточку
     const deleteIconElement = cardElement.querySelector('.elements__delete');
 
     deleteIconElement.addEventListener('click', () => {
         cardElement.remove();
     });
+
     // Поставить лайк
     const likeIconElement = cardElement.querySelector('.elements__like');
 
     likeIconElement.addEventListener('click', (evt) => {
         evt.target.classList.toggle('elements__like_active');
     });
+
     // Открыть попап карточки
     cardImage.addEventListener('click', () => {
         openPopup(imgPopupElement);
@@ -99,11 +103,36 @@ addButtonElement.addEventListener('click', () => {
 editPopupCloseButtonElement.addEventListener('click', () => {
     closePopup(editPopupElement);
 });
-addPopupCloseButtonElement.addEventListener('click', () => {
+
+addPopupCloseButtonElement.addEventListener('click', (evt) => {
     closePopup(addPopupElement);
 });
+
 imgPopupCloseButtonElement.addEventListener('click', () => {
     closePopup(imgPopupElement);
+});
+
+// Функция закрытия попапа при клике по оверлэю
+const closePopupByClickOverlay = (config) => {
+    const popupElementList = Array.from(document.querySelectorAll(config.popupClass));
+    popupElementList.forEach((popupItem) => {
+        popupItem.addEventListener('click', (evt) => {
+            if (evt.target === evt.currentTarget) {
+                closePopup(popupItem);
+            }
+        });
+    });
+}
+
+closePopupByClickOverlay(formValidationConfig);
+
+// Обработчики событий для закрытия попапа по Esc
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        closePopup(editPopupElement);
+        closePopup(addPopupElement);
+        closePopup(imgPopupElement);
+    }
 });
 
 const handleFormEditSubmit = (evt) => {
@@ -126,7 +155,7 @@ const handleFormEditSubmit = (evt) => {
 formEditElement.addEventListener('submit', handleFormEditSubmit);
 
 const handleFormAddSubmit = (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
     // Cоздаём объект и присваиваем значения полей формы
     const objNewCard = {
         name: inputAddNameElement.value,
