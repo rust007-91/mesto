@@ -4,10 +4,6 @@ const addPopupElement = document.querySelector('.popup_add');
 const imgPopupElement = document.querySelector('.popup_img');
 const cardImageInputElement = imgPopupElement.querySelector('.popup__card-image');
 const cardNameInputElement = imgPopupElement.querySelector('.popup__card-name');
-// Кнопки закрытия попапов
-const editPopupCloseButtonElement = document.querySelector('.popup__close_edit');
-const addPopupCloseButtonElement = document.querySelector('.popup__close_add');
-const imgPopupCloseButtonElement = document.querySelector('.popup__close_img');
 // Формы
 const formEditElement = document.querySelector('.popup__form_edit');
 const formAddElement = document.querySelector('.popup__form_add');
@@ -68,26 +64,36 @@ const renderCard = (data) => {
     cardsContainer.prepend(createCard(data)); // Помещаем карточку в контейнер вызовом creatCard
 };
 
-const reverseInitialCards = initialCards.reverse(); // Переварачиваем массив
+const reverseInitialCards = initialCards.reverse(); // Переворачиваем массив
 
 reverseInitialCards.forEach(renderCard); // Перебор и добавление карточек
 
                                             //Функционал попапов
 const fillPopupEditFields = () => {
-    // Получите значение полей profileTitle и profileDesc из элемента profile
-    const profileNameText = profileTitleElement.textContent;
+    const profileNameText = profileTitleElement.textContent;    // Получите значение полей profileTitle и profileDesc из элемента profile
     const profileJobText = profileDescElement.textContent;
-    // Установить значения из profile в атрубут value
-    inputEditNameElement.value = profileNameText;
+    inputEditNameElement.value = profileNameText;               // Установить значения из profile в атрубут value
     inputEditJobElement.value = profileJobText;
 };
 
+// Функция закрытия попапа
+const closeByEscape = (evt) => {
+    const openedPopup = document.querySelector('.popup_opened');
+    if (evt.key === 'Escape') {
+        closePopup(openedPopup);
+    }
+}
+
 const openPopup = (popup) => {
     popup.classList.add('popup_opened');
+
+    document.addEventListener('keydown', closeByEscape); // Навешиваем обработчик для закрытия попапа по Esc (в случае открытия попапа)
 }
 
 const closePopup = (popup) => {
     popup.classList.remove('popup_opened');
+
+    document.removeEventListener('keydown', closeByEscape); // Удаляем обработчик для закрытия попапа по Esc (после закрытия попапа)
 }
 
 // Обработчики событий для открытия попапа
@@ -95,30 +101,22 @@ editButtonElement.addEventListener('click', () => {
     openPopup(editPopupElement);
     fillPopupEditFields();
 });
+
 addButtonElement.addEventListener('click', () => {
     openPopup(addPopupElement);
 });
 
-// Обработчики событий для закрытия попапа
-editPopupCloseButtonElement.addEventListener('click', () => {
-    closePopup(editPopupElement);
-});
 
-addPopupCloseButtonElement.addEventListener('click', (evt) => {
-    closePopup(addPopupElement);
-});
-
-imgPopupCloseButtonElement.addEventListener('click', () => {
-    closePopup(imgPopupElement);
-});
-
-// Функция закрытия попапа при клике по оверлэю
+// Функция закрытия попапа при клике по оверлэю и крестику
 const closePopupByClickOverlay = (config) => {
     const popupElementList = Array.from(document.querySelectorAll(config.popupClass));
-    popupElementList.forEach((popupItem) => {
-        popupItem.addEventListener('click', (evt) => {
-            if (evt.target === evt.currentTarget) {
-                closePopup(popupItem);
+    popupElementList.forEach((popup) => {
+        popup.addEventListener('mousedown', (evt) => {
+            if (evt.target.classList.contains('popup_opened')) {
+                closePopup(popup);
+            }
+            if(evt.target.classList.contains('popup__close')) {
+                closePopup(popup);
             }
         });
     });
@@ -126,14 +124,6 @@ const closePopupByClickOverlay = (config) => {
 
 closePopupByClickOverlay(formValidationConfig);
 
-// Обработчики событий для закрытия попапа по Esc
-document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-        closePopup(editPopupElement);
-        closePopup(addPopupElement);
-        closePopup(imgPopupElement);
-    }
-});
 
 const handleFormEditSubmit = (evt) => {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.

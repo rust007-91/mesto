@@ -63,12 +63,18 @@ const enableValidation = (config) => {
     formList.forEach((form) => {                        // цикл поиска форм
         form.addEventListener('submit', disableSubmit); // отмена сабмита для каждой формы;
 
-        form.addEventListener('input', () => {          // блокировка сабмита
+        addInputListeners(form, config);                // вызов обработчика полей формы
+        toggleButtonState(form, config);                // деактивация внопки сабмит при загрузке сайта
+
+        form.addEventListener('input', () => {          // деактивация кнопки сабмит при обработке полей
             toggleButtonState(form, config);
         });
 
-        addInputListeners(form, config);                // вызов обработчика полей формы
-        toggleButtonState(form, config);
+        form.addEventListener('reset', () => { // деактивация кнопки сабмит при сбрасывании полей
+            setTimeout(() => {
+                toggleButtonState(form, config);
+            }, 0);
+        });
     });
 }
 

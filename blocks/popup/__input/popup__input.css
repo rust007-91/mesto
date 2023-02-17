@@ -1,6 +1,6 @@
 .popup__input {
-    padding: 0 0 13px 0;
-    margin: 20px 0 0 0;
+    padding: 0 0 5px 0;
+    margin: 0;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-weight: 400;
@@ -9,6 +9,3 @@
     box-sizing: border-box;
 }
 
-.popup__input:first-child {
-    margin: 0;
-}
