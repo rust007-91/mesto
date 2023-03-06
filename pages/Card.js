@@ -7,33 +7,8 @@ class Card {
         this._templateSelector = templateSelector;
     }
 
-    _getTemplate() {
-        const cardElement = document
-            .querySelector(this._templateSelector)
-            .content
-            .querySelector('.elements__card')
-            .cloneNode(true); // Клонируем содержимое тега template
-
-        return cardElement;
-    }
-
-    createCard() {
-        this._cardElement = this._getTemplate(); // запись для общего доступа к элементу
-        this._setEventListeners(); // установка слушателей
-        // Наполняем содержимым
-        this._cardImage = this._cardElement.querySelector('.elements__card-image');
-        this._cardTitle = this._cardElement.querySelector('.elements__title');
-
-        this._cardImage.src = this._link;
-        this._cardImage.alt = this._name;
-        this._cardTitle.textContent = this._name;
-
-        return this._cardElement;
-    }
-
-
-
-    _setEventListeners() {
+// Метод установки слушателей
+    _setEventListenersCard() {
         // Слушатель на мусорке
         const deleteIconElement =  this._cardElement.querySelector('.elements__delete');
         deleteIconElement.addEventListener('click', () => {
@@ -66,7 +41,7 @@ class Card {
         });
     }
 
-    // Обработчик попап карточки
+// Метод обработчика попап карточки
     _handlePopupCard() {
         const imgPopupElement = document.querySelector('.popup_img');
         const cardImageInputElement = imgPopupElement.querySelector('.popup__card-image');
@@ -78,7 +53,7 @@ class Card {
         openPopup(imgPopupElement);
     }
 
-    // Обработчик попап окна редактирования
+// Метод обработчика попап окна редактирования
     _handlePopupEdit() {
         const editPopupElement = document.querySelector('.popup_edit');
 
@@ -86,13 +61,38 @@ class Card {
         fillPopupEditFields();
     }
 
-    // Обработчик попап окна добавления карточки
+// Метод обработчика попап окна добавления карточки
     _handlePopupAdd() {
         const addPopupElement = document.querySelector('.popup_add');
 
         openPopup(addPopupElement);
     }
-}
 
+    // Метод получения карточки
+    _getTemplate() {
+        const cardElement = document
+            .querySelector(this._templateSelector)
+            .content
+            .querySelector('.elements__card')
+            .cloneNode(true); // Клонируем содержимое тега template
+
+        return cardElement;
+    }
+
+// Метод наполнения и генерации карточки
+    createCard() {
+        this._cardElement = this._getTemplate(); // запись для общего доступа к элементу
+        this._setEventListenersCard();          // установка слушателей
+        // Наполняем содержимым
+        this._cardImage = this._cardElement.querySelector('.elements__card-image');
+        this._cardTitle = this._cardElement.querySelector('.elements__title');
+
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
+        this._cardTitle.textContent = this._name;
+
+        return this._cardElement;
+    }
+}
 
 export default Card;
