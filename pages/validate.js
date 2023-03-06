@@ -1,4 +1,5 @@
-// Валидация форм
+
+
 const formValidationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
