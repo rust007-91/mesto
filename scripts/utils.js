@@ -42,8 +42,8 @@ const closeByEscape = (evt) => {
 }
 
 // Функция закрытия попапа при клике по оверлэю или крестику
-const closePopupByClickOverlay = (config) => {
-    const popupElementList = Array.from(document.querySelectorAll(config.popupClass));
+const closePopupByClickOverlay = (popupClass) => {
+    const popupElementList = Array.from(document.querySelectorAll(popupClass));
     popupElementList.forEach((popup) => {
         popup.addEventListener('mousedown', (evt) => {
             if (evt.target.classList.contains('popup_opened')) {
@@ -56,23 +56,7 @@ const closePopupByClickOverlay = (config) => {
     });
 }
 
-                                                // Функционал валидации
-// Отмена дефолтной перезагрузки
-const disableSubmit = (evt) => {
-    evt.preventDefault();
-}
-
-// Добавление ошибки
-const showInputError = (input, errorElement, errorClass) => {
-    errorElement.textContent = input.validationMessage;
-    input.classList.add(errorClass);
-}
-
-// Удаление ошибки
-const hideInputError = (input, errorElement, errorClass) => {
-    errorElement.textContent = '';
-    input.classList.remove(errorClass);
-}
 
 
-export {renderCard, fillPopupEditFields, openPopup, closePopup, showInputError, hideInputError, disableSubmit, closePopupByClickOverlay};
+
+export {renderCard, fillPopupEditFields, openPopup, closePopup, closePopupByClickOverlay};

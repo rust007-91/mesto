@@ -1,10 +1,15 @@
-import Card from "./Card.js";
-import {renderCard, closePopup, closePopupByClickOverlay} from "./utils.js";
-import formValidationConfig from './validate.js'
+import initialCards from "../scripts/constants.js";
+import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import {renderCard, fillPopupEditFields, openPopup, closePopup, closePopupByClickOverlay} from "../scripts/utils.js";
+import { formValidationConfig, createFormValidator } from '../scripts/validate.js';
 
 // Открытие попапов
 const editPopupElement = document.querySelector('.popup_edit');
 const addPopupElement = document.querySelector('.popup_add');
+const imgPopupElement = document.querySelector('.popup_img');
+const cardImageInputElement = imgPopupElement.querySelector('.popup__card-image');
+const cardNameInputElement = imgPopupElement.querySelector('.popup__card-name');
 // Формы
 const formEditElement = document.querySelector('.popup__form_edit');
 const formAddElement = document.querySelector('.popup__form_add');
@@ -18,10 +23,47 @@ const inputAddImgElement = document.querySelector('.popup__input_type_add-img');
 const profileElement = document.querySelector('.profile');
 const profileTitleElement = profileElement.querySelector('.profile__title');
 const profileDescElement = profileElement.querySelector('.profile__description');
+const editButtonElement = profileElement.querySelector('.profile__edit-button');
+const addButtonElement = profileElement.querySelector('.profile__add-button');
+
+                                            // Функционал Карточек
+// Функция обработчика попап картинки
+const handleOpenImage = (link, name) => {
+    cardImageInputElement.src = link;
+    cardImageInputElement.alt = name;
+    cardNameInputElement.textContent = name;
+    openPopup(imgPopupElement);
+}
+
+// Функция создания экземпляра карточки
+const generateCard = (data) => {
+    const card = new Card(data, '#elements__card', handleOpenImage);
+
+    return card.createCard();
+}
+
+const reverseInitialCards = initialCards.reverse();             // Переворачиваем массив
+
+reverseInitialCards.forEach((data) => {
+    renderCard(generateCard(data));                             // Добавление карточки в DOM
+});
+
+// Обработчики событий для открытия попапа
+editButtonElement.addEventListener('click', () => {
+    openPopup(editPopupElement);
+    fillPopupEditFields();
+});
+
+addButtonElement.addEventListener('click', () => {
+    openPopup(addPopupElement);
+});
+
+const popupClass = '.popup';
+closePopupByClickOverlay(popupClass); // вызов функции закрытия попапа при клике по оверлэю или крестику
 
 // Обработчик кнопки сабмит на форме edit
 const handleFormEditSubmit = (evt) => {
-    evt.preventDefault(); // Отменить стандартную отправку формы.
+    evt.preventDefault();                                               // Отменить стандартную отправку формы.
 
     // Получите значение полей jobInputElement и nameInputElement из свойства value
     const inputEditName = inputEditNameElement.value;
@@ -40,24 +82,16 @@ formEditElement.addEventListener('submit', handleFormEditSubmit); // слуша�
 const handleFormAddSubmit = (evt) => {
     evt.preventDefault();
 
-    const objNewCard = {                                                        // Cоздаём объект и присваиваем значения полей формы
+    const objNewCard = {                                // Cоздаём объект и присваиваем значения полей формы
         name: inputAddNameElement.value,
         link: inputAddImgElement.value
     };
-    const addedCard = new Card(objNewCard, '#elements__card');  // Cоздать инстанс новой карточки
-    renderCard(addedCard.createCard());                                         // Добавление карточки в DOM
-    closePopup(addPopupElement);                                                // Закрыть попап
-    formAddElement.reset();                                                     // Очисить поля
+    renderCard(generateCard(objNewCard));               // Добавление карточки в DOM
+
+    closePopup(addPopupElement);
+    formAddElement.reset();                             // Очисить поля
 }
 
 formAddElement.addEventListener('submit', handleFormAddSubmit); // слушатель сабмит на форме add
 
-closePopupByClickOverlay(formValidationConfig); // вызов функции закрытия попапа при клике по оверлэю или крестику
-
-                                    // Функционал Карточек
-const reverseInitialCards = initialCards.reverse();     // Переворачиваем массив
-
-reverseInitialCards.forEach((data) => {
-    const card = new Card(data, '#elements__card');     // Cоздание экземпляра карточки
-    renderCard(card.createCard());                                   // Добавление карточки в DOM
-});
+export {imgPopupElement, cardImageInputElement, cardNameInputElement};
