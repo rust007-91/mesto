@@ -2,7 +2,6 @@ import initialCards from "../scripts/constants.js";
 import Card from "../scripts/Card.js";
 import FormValidator from "../scripts/FormValidator.js";
 import {renderCard, fillPopupEditFields, openPopup, closePopup, closePopupByClickOverlay} from "../scripts/utils.js";
-import { formValidationConfig, createFormValidator } from '../scripts/validate.js';
 
 // Открытие попапов
 const editPopupElement = document.querySelector('.popup_edit');
@@ -26,6 +25,25 @@ const profileDescElement = profileElement.querySelector('.profile__description')
 const editButtonElement = profileElement.querySelector('.profile__edit-button');
 const addButtonElement = profileElement.querySelector('.profile__add-button');
 
+                                        // Функционал Валидации
+const formValidationConfig = {
+    formEditSelector: '.popup__form_edit',
+    formAddSelector: '.popup__form_add',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__form-submit',
+    errorActiveClass: 'popup__input_type_error',
+    buttonDisabledClass: 'popup__form-submit_disabled'
+}
+
+const formEdit = document.querySelector(formValidationConfig.formEditSelector);
+const formAdd = document.querySelector(formValidationConfig.formAddSelector);
+
+const formValidatorEdit = new FormValidator(formValidationConfig, formEdit);
+const formValidatorAdd = new FormValidator(formValidationConfig, formAdd);
+
+formValidatorEdit.enableValidation();
+formValidatorAdd.enableValidation();
+
                                             // Функционал Карточек
 // Функция обработчика попап картинки
 const handleOpenImage = (link, name) => {
@@ -48,6 +66,7 @@ reverseInitialCards.forEach((data) => {
     renderCard(generateCard(data));                             // Добавление карточки в DOM
 });
 
+                                            // Функционал попапов и форм
 // Обработчики событий для открытия попапа
 editButtonElement.addEventListener('click', () => {
     openPopup(editPopupElement);
@@ -55,6 +74,7 @@ editButtonElement.addEventListener('click', () => {
 });
 
 addButtonElement.addEventListener('click', () => {
+    formValidatorAdd._resetError(); // сбросить ошибки
     openPopup(addPopupElement);
 });
 

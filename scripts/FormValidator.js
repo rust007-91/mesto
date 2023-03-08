@@ -58,7 +58,7 @@ class FormValidator {
         this._buttonSubmit.classList.toggle(this._config.buttonDisabledClass, !isFormValid);
     }
 
-// Сброс некоректных (несохарённных) данных в форме при закрытии
+// Метод сброса некоректных (несохарённных) данных в форме при закрытии
     _resetError() {
         this._inputList.forEach((formInput) => {
             this._hideInputError(formInput, this._getErrorElement(formInput)); // очистить ошибки валидации
