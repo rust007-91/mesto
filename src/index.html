@@ -6,18 +6,16 @@
           content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
-    <script defer type="module" src="./pages/index.js"></script>
 </head>
 <body class="page">
     <div class="page__container">
         <header class="header">
-            <img src="./images/mesto-logo.svg" alt="Логотип_название 'Место Россия" class="header__logo">
+            <img src="<%=require('./images/mesto-logo.svg')%>" alt="Логотип_название 'Место Россия" class="header__logo">
         </header>
         <main>
             <section class="profile">
                 <div class="profile__container">
-                    <img src="./images/kusto-avatar.jpg" alt="Аватарка" class="profile__avatar-image">
+                    <img src="<%=require('./images/kusto-avatar.jpg')%>" alt="Аватарка" class="profile__avatar-image">
                     <div class="profile__info">
                         <div class="profile__text-wrapper">
                             <h1 class="profile__title">Жак-Ив Кусто</h1>
