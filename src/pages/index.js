@@ -2,14 +2,17 @@ import '../pages/index.css';
 import initialCards from "../scripts/constants.js";
 import Card from "../scripts/Card.js";
 import FormValidator from "../scripts/FormValidator.js";
-import {renderCard, fillPopupEditFields, openPopup, closePopup, closePopupByClickOverlay} from "../scripts/utils.js";
+import Section from "../scripts/Section.js";
+import Popup from "../scripts/Popup.js";
+import PopupWithImage from "../scripts/PopupWithImage.js";
+import {fillPopupEditFields} from "../scripts/utils.js";
+
 
 // Открытие попапов
-const editPopupElement = document.querySelector('.popup_edit');
-const addPopupElement = document.querySelector('.popup_add');
-const imgPopupElement = document.querySelector('.popup_img');
-const cardImageInputElement = imgPopupElement.querySelector('.popup__card-image');
-const cardNameInputElement = imgPopupElement.querySelector('.popup__card-name');
+
+// const imgPopupElement = document.querySelector('.popup_img');
+// const cardImageInputElement = imgPopupElement.querySelector('.popup__card-image');
+// const cardNameInputElement = imgPopupElement.querySelector('.popup__card-name');
 // Формы
 const formEditElement = document.querySelector('.popup__form_edit');
 const formAddElement = document.querySelector('.popup__form_add');
@@ -46,41 +49,53 @@ formValidatorEdit.enableValidation();
 formValidatorAdd.enableValidation();
 
                                             // Функционал Карточек
+
+
 // Функция обработчика попап картинки
-const handleOpenImage = (link, name) => {
-    cardImageInputElement.src = link;
-    cardImageInputElement.alt = name;
-    cardNameInputElement.textContent = name;
-    openPopup(imgPopupElement);
+const handleCardClick = (link, name) => {
+
+    const popupWithImage = new PopupWithImage('.popup_img', link, name);
+    popupWithImage.open();
 }
 
 // Функция создания экземпляра карточки
 const generateCard = (data) => {
-    const card = new Card(data, '#elements__card', handleOpenImage);
+    const card = new Card(data, '#elements__card', handleCardClick);
 
     return card.createCard();
 }
 
+// Помещаем карточку в DOM
+const renderCard = (cardData) => {
+    const cardElement = generateCard(cardData);
+    section.addItem(cardElement);
+}
+
 const reverseInitialCards = initialCards.reverse();             // Переворачиваем массив
 
-reverseInitialCards.forEach((data) => {
-    renderCard(generateCard(data));                             // Добавление карточки в DOM
-});
+
+const section = new Section({itemList: reverseInitialCards, renderer: renderCard}, '.elements__list');
+
+section.renderItems();
 
                                             // Функционал попапов и форм
 // Обработчики событий для открытия попапа
 editButtonElement.addEventListener('click', () => {
-    openPopup(editPopupElement);
+    const popup = new Popup('.popup_edit');
+    popup.open();
+    // openPopup(editPopupElement);
     fillPopupEditFields();
 });
 
 addButtonElement.addEventListener('click', () => {
     formValidatorAdd._resetError(); // сбросить ошибки
-    openPopup(addPopupElement);
+    // openPopup(addPopupElement);
+    const popup = new Popup('.popup_add');
+    popup.open();
 });
 
-const popupClass = '.popup';
-closePopupByClickOverlay(popupClass); // вызов функции закрытия попапа при клике по оверлэю или крестику
+
+
 
 // Обработчик кнопки сабмит на форме edit
 const handleFormEditSubmit = (evt) => {
@@ -114,5 +129,3 @@ const handleFormAddSubmit = (evt) => {
 }
 
 formAddElement.addEventListener('submit', handleFormAddSubmit); // слушатель сабмит на форме add
-
-export {imgPopupElement, cardImageInputElement, cardNameInputElement};

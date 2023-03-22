@@ -1,9 +1,9 @@
 class Card {
-    constructor(data, templateSelector, handleOpenImage) {
+    constructor(data, templateSelector, handleCardClick) {
         this._link = data.link;
         this._name = data.name;
         this._templateSelector = templateSelector;
-        this._handleOpenImage = handleOpenImage;
+        this._handleCardClick = handleCardClick;
     }
 
 // Метод установки слушателей
@@ -22,7 +22,7 @@ class Card {
 
         // Слушатель попап на карточке
         this._cardImage.addEventListener('click', () => {
-           this._handleOpenImage(this._link, this._name);
+           this._handleCardClick(this._link, this._name);
         });
     }
 
