@@ -2,7 +2,6 @@ class Popup {
     constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
         this._popupActiveClass = 'popup_opened';
-        this.setEventListeners();
     }
 
 // Метод открытия попапа

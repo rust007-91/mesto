@@ -10,6 +10,7 @@ module.exports = {
         filename: 'main.[hash].js',
         publicPath: ''
     },
+    devtool: 'source-map',
     mode: 'development',
     devServer: {
         static: path.resolve(__dirname, './dist'), // путь, куда "смотрит" режим разработчика

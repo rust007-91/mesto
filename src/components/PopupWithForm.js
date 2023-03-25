@@ -4,12 +4,13 @@ class PopupWithForm extends Popup{
     constructor(popupSelector, handleFormSubmit) {
         super(popupSelector);
         this._handleFormSubmit = handleFormSubmit;
-        this._formElement = document.querySelector('.popup__form');
-        this._popupInputList = document.querySelectorAll('.popup__input');
+        this._formElement = this._popupElement.querySelector('.popup__form');
+        this._popupInputList = this._popupElement.querySelectorAll('.popup__input');
     }
 
+// Наследованные и переопределённый метод обработки формы
     setEventListeners() {
-        super.setEventListeners();
+        const setEventListenersForms = super.setEventListeners();
 
         this._formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
@@ -17,29 +18,24 @@ class PopupWithForm extends Popup{
             this.close();
         });
 
+        return setEventListenersForms;
     }
 
+// Метод сбора данных полей формы
     _getInputValues() {
         this.inputValue = {};
 
         this._popupInputList.forEach((input) => {
+            console.log(input.value)
             this.inputValue[input.name] = input.value;
         });
 
         return this.inputValue;
     }
-
-    // setInputValues(data) {
-    //     const inputData = this._getInputValues();
-    //     this._popupInputList.forEach((input) => {
-    //         input.value = inputData[input.name];
-    //     });
-    // }
-
+// Наследованный и переопределённый метод закрытия формы
     close() {
         const closeForm = super.close();
-        // this._formElement.reset();
-
+        this._formElement.reset(); // сброс полей формы после закрытия
         return closeForm;
     }
 }

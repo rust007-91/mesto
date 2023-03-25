@@ -15,5 +15,6 @@
 * JavaScript (интерактивность карточек, форм, попапов)
 * JavaScript (отзывчивая валидация форм)
 * ООП интерфейсы
+* Webpack сборщик
 
 [Ссылка на сайт](https://rust007-91.github.io/mesto/index.html)
