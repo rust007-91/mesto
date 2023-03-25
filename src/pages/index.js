@@ -5,17 +5,12 @@ import FormValidator from "../scripts/FormValidator.js";
 import Section from "../scripts/Section.js";
 import Popup from "../scripts/Popup.js";
 import PopupWithImage from "../scripts/PopupWithImage.js";
-import {fillPopupEditFields} from "../scripts/utils.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
+import UserInfo from "../scripts/UserInfo.js";
 
-
-// Открытие попапов
-
-// const imgPopupElement = document.querySelector('.popup_img');
-// const cardImageInputElement = imgPopupElement.querySelector('.popup__card-image');
-// const cardNameInputElement = imgPopupElement.querySelector('.popup__card-name');
 // Формы
-const formEditElement = document.querySelector('.popup__form_edit');
-const formAddElement = document.querySelector('.popup__form_add');
+// const formEditElement = document.querySelector('.popup__form_edit');
+// const formAddElement = document.querySelector('.popup__form_add');
 // Поля формы edit
 const inputEditNameElement = document.querySelector('.popup__input_type_edit-name');
 const inputEditJobElement = document.querySelector('.popup__input_type_edit-job');
@@ -50,7 +45,6 @@ formValidatorAdd.enableValidation();
 
                                             // Функционал Карточек
 
-
 // Функция обработчика попап картинки
 const handleCardClick = (link, name) => {
 
@@ -78,13 +72,17 @@ const section = new Section({itemList: reverseInitialCards, renderer: renderCard
 
 section.renderItems();
 
+
+const userInfo = new UserInfo({nameSelector: '.profile__title', descSelector: '.profile__description'});
                                             // Функционал попапов и форм
 // Обработчики событий для открытия попапа
 editButtonElement.addEventListener('click', () => {
     const popup = new Popup('.popup_edit');
     popup.open();
     // openPopup(editPopupElement);
-    fillPopupEditFields();
+    // fillPopupEditFields();
+
+    userInfo.getUserInfo();
 });
 
 addButtonElement.addEventListener('click', () => {
@@ -98,22 +96,18 @@ addButtonElement.addEventListener('click', () => {
 
 
 // Обработчик кнопки сабмит на форме edit
-const handleFormEditSubmit = (evt) => {
-    evt.preventDefault();                                               // Отменить стандартную отправку формы.
+const handleFormSubmit = (data) => {
 
-    // Получите значение полей jobInputElement и nameInputElement из свойства value
-    const inputEditName = inputEditNameElement.value;
-    const inputAddJob = inputEditJobElement.value;
-    // Выберите элементы, куда должны быть вставлены значения полей
-    // Вставьте новые значения с помощью textContent
-    profileTitleElement.textContent = inputEditName;
-    profileDescElement.textContent = inputAddJob;
+    userInfo.setUserInfo(data);
 
-    closePopup(editPopupElement);
+
 }
+const popupWithForm = new PopupWithForm('.popup_edit', handleFormSubmit);
 
-formEditElement.addEventListener('submit', handleFormEditSubmit); // слушатель сабмит на форме edit
 
+
+
+/*
 // Обработчик кнопки сабмит на форме add
 const handleFormAddSubmit = (evt) => {
     evt.preventDefault();
@@ -128,4 +122,4 @@ const handleFormAddSubmit = (evt) => {
     formAddElement.reset();                             // Очисить поля
 }
 
-formAddElement.addEventListener('submit', handleFormAddSubmit); // слушатель сабмит на форме add
+const popupWithForm1 = new PopupWithForm('.popup_add', handleFormAddSubmit);*/

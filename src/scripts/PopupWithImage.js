@@ -9,13 +9,17 @@ class PopupWithImage extends Popup {
         this._cardImageInputElement = document.querySelector('.popup__card-image');
         this._cardNameInputElement = document.querySelector('.popup__card-name');
     }
-}
 
-// Метод открытия попапа
-    open = () => {
+    // Метод открытия попапа
+    open() {
+        const openImage = super.open();
+
         this._cardImageInputElement.src = this._link;
         this._cardImageInputElement.alt = this._name;
         this._cardNameInputElement.textContent = this._name;
+
+        return openImage;
     }
+}
 
 export default PopupWithImage;
