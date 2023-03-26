@@ -4,14 +4,15 @@ class UserInfo {
     constructor({nameSelector, descSelector}) {
         this._nameSelector = document.querySelector(nameSelector);
         this._descSelector = document.querySelector(descSelector);
-        this._inputEditNameElement = document.querySelector('.popup__input_type_edit-name');
-        this._inputEditJobElement = document.querySelector('.popup__input_type_edit-job');
     }
 
 // Метод подстановки данных при открытии формы edit
     getUserInfo() {
-        this._inputEditNameElement.value = this._nameSelector.textContent;
-        this._inputEditJobElement.value = this._descSelector.textContent;
+        const inputInfo = {
+            name: this._nameSelector.textContent,
+            desc: this._descSelector.textContent
+        };
+        return inputInfo;
     }
 // Метод подстановки данных на страницу
     setUserInfo(data) {

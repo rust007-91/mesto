@@ -8,11 +8,9 @@ class FormValidator {
         this._errorClass = this._config.errorActiveClass;
     }
 
-    // Метод инпута с ошибкой
+// Метод инпута с ошибкой
     _getErrorElement(input) {
-        const inputId = input.id;
-        const errorElement = document.querySelector(`#${inputId}-error`);
-
+        const errorElement = document.querySelector(`#${input.id}-error`);
         return errorElement;
     }
 
@@ -47,6 +45,7 @@ class FormValidator {
         this._inputList.forEach((input) => {                      // цикл поиска полей в форме
             input.addEventListener('input', () => {
                 this._handleFormInput(input);             // проверка валидности введённых значений
+                this._toggleButtonState(this._form, this._config); // деактивация кнопки сабмит при обработке полей
             });
         });
     }
@@ -69,13 +68,9 @@ class FormValidator {
 
 // Метод установки слушателей
     _setEventListenersValidator() {
-        this._form.addEventListener('input', () => {          // деактивация кнопки сабмит при обработке полей
-            this._toggleButtonState(this._form, this._config);
-        });
-
         this._form.addEventListener('reset', () => { // деактивация кнопки сабмит при сбрасывании полей
             setTimeout(() => {
-                this._toggleButtonState(this._form, this._config);
+                this._resetError();
             }, 0);
         });
 

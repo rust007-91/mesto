@@ -12,6 +12,9 @@ import UserInfo from "../components/UserInfo.js";
 const editButtonElement = document.querySelector('.profile__edit-button');
 const addButtonElement = document.querySelector('.profile__add-button');
 
+const inputEditNameElement = document.querySelector('.popup__input_type_edit-name');
+const inputEditJobElement = document.querySelector('.popup__input_type_edit-job');
+
                                         // Функционал Валидации
 const formValidationConfig = {
     formEditSelector: '.popup__form_edit',
@@ -31,11 +34,19 @@ const formValidatorAdd = new FormValidator(formValidationConfig, formAdd);
 formValidatorEdit.enableValidation();
 formValidatorAdd.enableValidation();
 
+// const popupEdit = new Popup('.popup_edit');
+// popupEdit.setEventListeners();
+//
+// const popupAdd = new Popup('.popup_add');
+// popupAdd.setEventListeners();
+
                                             // Функционал Карточек
 // Обработчик попапа карточки
+const popupWithImage = new PopupWithImage('.popup_img');
+popupWithImage.setEventListeners();
+
 const handleCardClick = (link, name) => {
-    const popupWithImage = new PopupWithImage('.popup_img', link, name);
-    popupWithImage.open();
+    popupWithImage.open(link, name);
 }
 
 // Создаём экземпляр карточки
@@ -59,7 +70,7 @@ section.renderItems(); // Рендер карточек
 // Класс
 const userInfo = new UserInfo({nameSelector: '.profile__title', descSelector: '.profile__description'});
 
-                                                // Функционал формы edit
+                                        // Функционал формы edit
 // Обработчик добавления данных на страницу
 const handleFormEditSubmit = (data) => {
     userInfo.setUserInfo(data);
@@ -70,12 +81,18 @@ popupWithFormEdit.setEventListeners();
 
 editButtonElement.addEventListener('click', () => {
     popupWithFormEdit.open();
-    userInfo.getUserInfo(); // подстановка данных при открытии
+
+    // подстановка данных при открытии
+    const inputInfo = userInfo.getUserInfo();
+    inputEditNameElement.value = inputInfo.name;
+    inputEditJobElement.value = inputInfo.desc;
 });
 
                                         // Функционал формы add
 // Обработчик добавления данных на страницу
 const handleFormAddSubmit = (data) => {
+
+
     const objNewCard = {                   // Cоздаём объект и присваиваем значения полей формы
         name: data.heading,
         link: data.desc
@@ -87,7 +104,6 @@ const popupWithFormAdd = new PopupWithForm('.popup_add', handleFormAddSubmit);
 popupWithFormAdd.setEventListeners();
 
 addButtonElement.addEventListener('click', () => {
-    formValidatorAdd._resetError(); // сбросить ошибки
     popupWithFormAdd.open();
 });
 

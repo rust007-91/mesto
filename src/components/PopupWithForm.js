@@ -10,7 +10,7 @@ class PopupWithForm extends Popup{
 
 // Наследованные и переопределённый метод обработки формы
     setEventListeners() {
-        const setEventListenersForms = super.setEventListeners();
+        super.setEventListeners();
 
         this._formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
@@ -18,25 +18,23 @@ class PopupWithForm extends Popup{
             this.close();
         });
 
-        return setEventListenersForms;
     }
 
 // Метод сбора данных полей формы
     _getInputValues() {
-        this.inputValue = {};
+        const inputValue = {};
 
         this._popupInputList.forEach((input) => {
             console.log(input.value)
-            this.inputValue[input.name] = input.value;
+            inputValue[input.name] = input.value;
         });
 
-        return this.inputValue;
+        return inputValue;
     }
 // Наследованный и переопределённый метод закрытия формы
     close() {
-        const closeForm = super.close();
+        super.close();
         this._formElement.reset(); // сброс полей формы после закрытия
-        return closeForm;
     }
 }
 

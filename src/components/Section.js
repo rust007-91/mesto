@@ -6,9 +6,7 @@ class Section {
     }
 // Метод перебора карточки
     renderItems() {
-        this._itemList.forEach((item) => {
-            this._renderer(item);
-        });
+        this._itemList.forEach(this._renderer);
     }
 // Метод добавления карточки в DOM
     addItem(itemHtml) {

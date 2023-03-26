@@ -28,12 +28,11 @@ class Popup {
 // Слушатели закрытия попапа при клике по оверлэю или крестику
     setEventListeners() {
         this._popupElement.addEventListener('mousedown', (evt) => {
-            if (evt.target.classList.contains(this._popupActiveClass)) {
+            if (evt.target.classList.contains(this._popupActiveClass) ||
+                evt.target.classList.contains('popup__close')) {
                 this.close();
             }
-            if(evt.target.classList.contains('popup__close')) {
-                this.close();
-            }
+
         });
     }
 }
