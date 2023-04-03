@@ -22,14 +22,14 @@ class PopupWithForm extends Popup{
 
 // Метод сбора данных полей формы
     _getInputValues() {
-        const inputValue = {};
+        const inputValues = {};
 
         this._popupInputList.forEach((input) => {
             console.log(input.value)
-            inputValue[input.name] = input.value;
+            inputValues[input.name] = input.value;
         });
 
-        return inputValue;
+        return inputValues;
     }
 // Наследованный и переопределённый метод закрытия формы
     close() {

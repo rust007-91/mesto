@@ -45,7 +45,7 @@ class FormValidator {
         this._inputList.forEach((input) => {                      // цикл поиска полей в форме
             input.addEventListener('input', () => {
                 this._handleFormInput(input);             // проверка валидности введённых значений
-                this._toggleButtonState(this._form, this._config); // деактивация кнопки сабмит при обработке полей
+                this._toggleButtonState(); // деактивация кнопки сабмит при обработке полей
             });
         });
     }
