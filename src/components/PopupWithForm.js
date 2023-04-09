@@ -6,6 +6,7 @@ class PopupWithForm extends Popup{
         this._handleFormSubmit = handleFormSubmit;
         this._formElement = this._popupElement.querySelector('.popup__form');
         this._popupInputList = this._popupElement.querySelectorAll('.popup__input');
+        this._formSubmitElement = this._popupElement.querySelector('.popup__form-submit');
     }
 
 // Наследованные и переопределённый метод обработки формы
@@ -14,10 +15,9 @@ class PopupWithForm extends Popup{
 
         this._formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._handleFormSubmit(this._getInputValues());
+            this._handleFormSubmit(this._getInputValues()); // обаботчик полей форм
             this.close();
         });
-
     }
 
 // Метод сбора данных полей формы
@@ -25,17 +25,23 @@ class PopupWithForm extends Popup{
         const inputValues = {};
 
         this._popupInputList.forEach((input) => {
-            console.log(input.value)
             inputValues[input.name] = input.value;
         });
 
         return inputValues;
     }
+
 // Наследованный и переопределённый метод закрытия формы
     close() {
         super.close();
         this._formElement.reset(); // сброс полей формы после закрытия
     }
+
+    setLoading(text) {
+        this._formSubmitElement.textContent = text;
+    }
 }
+
+
 
 export default PopupWithForm;

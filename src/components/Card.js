@@ -1,17 +1,19 @@
 class Card {
-    constructor(data, templateSelector, handleCardClick) {
+    constructor({data, handleCard, handleDelete}, templateSelector) {
         this._link = data.link;
         this._name = data.name;
+        this._id = data._id;
         this._templateSelector = templateSelector;
-        this._handleCardClick = handleCardClick;
+        this._handleCardClick = handleCard;
+        this._handleDeleteIconClick = handleDelete;
     }
 
 // Метод установки слушателей
     _setEventListenersCard() {
         // Слушатель на мусорке
-        const deleteIconElement =  this._cardElement.querySelector('.elements__delete');
+        const deleteIconElement = this._cardElement.querySelector('.elements__delete');
         deleteIconElement.addEventListener('click', () => {
-            this._cardElement.remove(); // Удаление карточки
+            this._handleDeleteIconClick(this._id); // вызов обработчика запроса на удаление карточки
         });
 
         // Слушатель на лайке
@@ -51,6 +53,11 @@ class Card {
         this._setEventListenersCard();          // установка слушателей
 
         return this._cardElement;
+    }
+
+// Метод удаления карточки
+    deleteCard = () => {
+        this._cardElement.remove();
     }
 }
 

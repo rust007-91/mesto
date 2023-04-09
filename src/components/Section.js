@@ -1,12 +1,13 @@
 class Section {
-    constructor({itemList, renderer}, selector) {
-        this._itemList = itemList;
+    constructor(renderer, selector) {
         this._renderer = renderer;
         this._container = document.querySelector(selector);
     }
 // Метод перебора карточки
-    renderItems() {
-        this._itemList.forEach(this._renderer);
+    renderItems(itemList) {
+        itemList.forEach((item) => {
+            this._renderer(item);
+        });
     }
 // Метод добавления карточки в DOM
     addItem(itemHtml) {

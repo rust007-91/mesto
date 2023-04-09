@@ -9,6 +9,7 @@
 
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/__container/profile__container.css";
+@import "../blocks/profile/__avatar-button/profile__avatar-button.css";
 @import "../blocks/profile/__avatar-image/profile__avatar-image.css";
 @import "../blocks/profile/__info/profile__info.css";
 @import "../blocks/profile/__text-wrapper/profile__text-wrapper.css";
@@ -39,6 +40,7 @@
 @import "../blocks/popup/__form-heading/popup__form-heading.css";
 @import "../blocks/popup/__form-fieldset/popup__form-fieldset.css";
 @import "../blocks/popup/__input/popup__input.css";
+
 @import "../blocks/popup/__input/__input/_type/_error/popup__input_type_error.css";
 @import "../blocks/popup/__form-submit/popup__form-submit.css";
 @import "../blocks/popup/__form-submit/_disabled/popup__form-submit_disabled.css";

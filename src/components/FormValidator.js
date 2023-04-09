@@ -4,7 +4,7 @@ class FormValidator {
         this._form = form;
         this._config = config;
         this._buttonSubmit = this._form.querySelector( this._config.submitButtonSelector);
-        this._inputList = Array.from(this._form.querySelectorAll( this._config.inputSelector));
+        this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
         this._errorClass = this._config.errorActiveClass;
     }
 
@@ -42,10 +42,10 @@ class FormValidator {
 
 // Метод наложения обработчиков на поля форм
     _addInputListeners() {
-        this._inputList.forEach((input) => {                      // цикл поиска полей в форме
+        this._inputList.forEach((input) => {             // цикл поиска полей в форме
             input.addEventListener('input', () => {
-                this._handleFormInput(input);             // проверка валидности введённых значений
-                this._toggleButtonState(); // деактивация кнопки сабмит при обработке полей
+                this._handleFormInput(input);            // проверка валидности введённых значений
+                this._toggleButtonState();              // деактивация кнопки сабмит при обработке полей
             });
         });
     }
@@ -79,7 +79,7 @@ class FormValidator {
 
 // Метод запуска валидации
     enableValidation() {
-        this._setEventListenersValidator();                 // установка слушателей
+        this._setEventListenersValidator();   // установка слушателей
 
         this._addInputListeners();            // вызов обработчика полей формы
         this._toggleButtonState();            // деактивация внопки сабмит при загрузке сайта
