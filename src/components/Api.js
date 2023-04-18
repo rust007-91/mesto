@@ -26,12 +26,7 @@ class Api {
             method: 'GET',
             headers: this._headers,
         })
-            .then((res) => {
-                if(res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status}`)
-            })
+            .then((res) => this._getServStatus(res))
     }
 
 // Метод обновления информации о пользователе на сервере
@@ -80,6 +75,25 @@ class Api {
         })
             .then((res) => this._getServStatus(res))
     }
+// Метод добавления лайка на сервер
+    setApiLike(id) {
+        return fetch(`${this._url}cards/${id}/likes`, {
+            method: 'PUT',
+            headers: this._headers,
+        })
+            .then((res) => this._getServStatus(res))
+    }
+
+// Метод удаления лайка на сервер
+    deleteApiLike(id) {
+        return fetch(`${this._url}cards/${id}/likes`, {
+            method: 'DELETE',
+            headers: this._headers,
+        })
+            .then((res) => this._getServStatus(res))
+    }
+
+
 
 
 

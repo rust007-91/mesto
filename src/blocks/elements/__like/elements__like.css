@@ -1,11 +1,10 @@
 .elements__like {
-    max-width: 22px;
+    width: 22px;
     height: 19px;
-    width: 100%;
     background: url("../../../images/vector-like.svg") center center no-repeat;
-    margin-left: 16px;
     border: none;
     padding: 0;
+    margin-bottom: 3px;
 }
 
 .elements__like:hover {

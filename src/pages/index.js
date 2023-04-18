@@ -39,7 +39,7 @@ const formValidatorAvatar = new FormValidator(formValidationConfig, formAvatar);
 
 formValidatorEdit.enableValidation();
 formValidatorAdd.enableValidation();
-// formValidatorAvatar.enableValidation();
+formValidatorAvatar.enableValidation();
 
 // const popupEdit = new Popup('.popup_edit');
 // popupEdit.setEventListeners();
@@ -57,23 +57,23 @@ const handleCardClick = (link, name) => {
     popupWithImage.open(link, name);
 }
 
-// Инициализация данных для запроса карточек с сервера
+// Инициализация данных для запроса данных с сервера
 const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-62/',
+    url: 'https://mesto.nomoreparties.co/v1/cohort-64/',
     headers: {
         'content-type': 'application/json',
-        authorization: '219d5a2e-c83a-413f-99f2-e866bdc38d77',
+        authorization: '3e8e1ee3-c047-4c7b-af99-8c5e2a637cf7',
     },
 })
 
+let userId; // id для дальнейшего получения и передачи в Card
 
-const generateCard = (cardData) => {
-    // Обработчик удаления карточки
-    const handleDeleteIconClick = (id) => {
+const createCard = (cardData) => {
+
+    const handleDeleteIconClick = (id) => {                                     // Обработчик удаления карточки
         const popupWithFormConfirm = new PopupWithSubmit('.popup_confirm', {
-            handleFormConfirmSubmit: () => {
-                const deleteApiCard = api.deleteApiCard(id);
-                deleteApiCard
+            handleFormConfirmSubmit: () => {                                    // Обработчик подтвержединя удаления карточки
+                api.deleteApiCard(id)
                     .then((res) => {
                         card.deleteCard()
                     })
@@ -82,66 +82,72 @@ const generateCard = (cardData) => {
         });
 
         popupWithFormConfirm.open();
-        popupWithFormConfirm.setEventListeners();
+    }
+
+    const handleAddLikeClick = (cardId) => {
+        api.setApiLike(cardId)
+            .then((res) => {
+                // card.setCardLike(res);
+                card.handleLike(res);
+            })
+            .catch((err) => alert(err));
+    }
+
+    const handleDeleteLikeClick = (cardId) => {
+        api.deleteApiLike(cardId)
+            .then((res) => {
+                // card.delCardLike();
+                console.log(res);
+                card.handleLike(res);
+            })
+            .catch((err) => alert(err));
     }
 
     const card = new Card({
             data: cardData,
             handleCard: handleCardClick,
-            handleDelete: handleDeleteIconClick},
-        '#elements__card'
+            handleDelete: handleDeleteIconClick,
+            handleAddLike: handleAddLikeClick,
+            handleDelLike: handleDeleteLikeClick,
+        },
+        '#elements__card', userId
     );
 
-    return card.createCard();
+
+
+    return card.generateCard(); // создание карточки
 }
-
-
-// Создаём экземпляр карточки
-// const generateCard = (cardData) => {
-//     // Обработчик удаления карточки
-//     const handleDeleteIconClick = (id) => {
-//         const deleteApiCard = api.deleteApiCard(id);
-//         deleteApiCard
-//             .then((res) => {
-//                 card.deleteCard()
-//             })
-//             .catch((err) => alert(err));
-//     }
-//
-//     const card = new Card({
-//         data: cardData,
-//         handleCard: handleCardClick,
-//         handleDelete: handleDeleteIconClick},
-//         '#elements__card'
-//     );
-//
-//     return card.createCard();
-// }
 
 
 // Генерируем и помещаем карточку в DOM
 const renderCard = (cardData) => {
-    const cardElement = generateCard(cardData);
+    const cardElement = createCard(cardData);
     section.addItem(cardElement);
 }
 
 const section = new Section(renderCard, '.elements__list');
 
 
+
 // Перебираем массив промисов первоначальной информации на странице
 Promise.all([api.getApiCard(), api.getApiInfo()])
     .then((dataList) => {
         const [initialCards, profileInfo] = dataList; // диструктурируем собранный массив данных
-
+        userId = profileInfo._id; // айди пользователя для передачи в card
         section.renderItems(initialCards.reverse()); // Рендер карточек
         userInfo.setUserInfo(profileInfo); // Подгрузка данных профиля с сервера
+
     })
     .catch((err) => alert(err));
 
 
                                    // Функционал попапов и форм
 // Класс
-const userInfo = new UserInfo({nameSelector: '.profile__title', descSelector: '.profile__description', avatarSelector:'.profile__avatar-image'});
+const userInfo = new UserInfo({
+    nameSelector: '.profile__title',
+    descSelector: '.profile__description',
+    avatarSelector:'.profile__avatar-image'
+});
 
 
                                         // Функционал формы edit
@@ -173,7 +179,7 @@ editButtonElement.addEventListener('click', () => {
                                         // Функционал формы add
 // Обработчик добавления карточки на страницу
 const handleFormAddSubmit = (data) => {
-    popupWithFormAdd.setLoading('Создание...');     // прелоадер
+    popupWithFormAdd.setLoading('Сохранение...');     // прелоадер
 
     const newCard = api.setApiNewCard(data);
     newCard.then((card) => {

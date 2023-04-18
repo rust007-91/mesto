@@ -1,0 +1,5 @@
+.elements__wrapper-like {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}

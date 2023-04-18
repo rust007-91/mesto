@@ -1,4 +1,3 @@
-import _nameSelector from "./PopupWithImage";
 
 class UserInfo {
     constructor({nameSelector, descSelector, avatarSelector}) {

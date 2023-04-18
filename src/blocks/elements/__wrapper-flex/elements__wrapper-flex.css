@@ -2,7 +2,6 @@
     margin: 0;
     max-width: 241px;
     display: flex;
-    align-items: baseline;
     justify-content: space-between;
     padding: 22px 15px 0 21px;
 }

@@ -26,8 +26,10 @@
 @import "../blocks/elements/__wrapper-flex/elements__wrapper-flex.css";
 @import "../blocks/elements/__title/elements__title.css";
 @import "../blocks/elements/__delete/elements__delete.css";
+@import "../blocks/elements/__wrapper-like/elements__wrapper-like.css";
 @import "../blocks/elements/__like/elements__like.css";
 @import "../blocks/elements/__like/_active/elements__like_active.css";
+@import "../blocks/elements/__count-likes/elements__count-likes.css";
 
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__copy/footer__copy.css";
