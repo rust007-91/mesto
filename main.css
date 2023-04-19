@@ -6,7 +6,8 @@
 .header__logo{height:33px;max-width:142px;-o-object-fit:cover;object-fit:cover}@media screen and (max-width:640px){.header__logo{height:24.4px;padding-left:27px;width:103.74px}}
 .profile{align-items:center;display:flex;justify-content:space-between;margin:40px auto 0;max-width:880px;min-height:120px}@media screen and (max-width:690px){.profile{flex-direction:column;margin-top:42px}}
 .profile__container{align-items:center;display:flex}@media screen and (max-width:690px){.profile__container{flex-direction:column}}
-.profile__avatar-image{border-radius:50%;height:120px;max-width:120px;-o-object-fit:cover;object-fit:cover;width:100%}
+.profile__avatar-button{border:none;border-radius:50%;height:120px;max-width:120px;padding:0;position:relative}.profile__avatar-button:hover:before{background-size:26px 26px;background:url(images/vector-avatar_button.ae1a976ddb506239e9f0.svg) 50% no-repeat rgba(0,0,0,.8);content:"";cursor:pointer;height:100%;left:0;position:absolute;top:0;width:100%}
+.profile__avatar-image{border-radius:50%;height:120px;max-width:120px;-o-object-fit:cover;object-fit:cover;padding:0;width:100%}
 .profile__info{align-items:baseline;display:flex;margin-left:30px}@media screen and (max-width:690px){.profile__info{margin-top:24px}}
 .profile__text-wrapper{max-width:336px}@media screen and (max-width:690px){.profile__text-wrapper{max-width:189px}}
 .profile__title{color:#fff;font-size:42px;font-weight:500;line-height:48px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:690px){.profile__title{font-size:27px;line-height:33px;text-align:center}}
@@ -18,11 +19,13 @@
 .elements__card{list-style-type:none;position:relative}
 .elements__card-image{border-radius:10px 10px 0 0;color:#fff;cursor:pointer;display:block;height:282px;-o-object-fit:cover;object-fit:cover;width:100%}
 .elements__wrapper-place{background:#fff;border-radius:0 0 10px 10px;height:79px}
-.elements__wrapper-flex{align-items:baseline;display:flex;justify-content:space-between;margin:0;max-width:241px;padding:22px 15px 0 21px}
+.elements__wrapper-flex{display:flex;justify-content:space-between;margin:0;max-width:241px;padding:22px 15px 0 21px}
 .elements__title{font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .elements__delete{background:url(images/vector-trash.ce3b64935accf9b8212e.svg) 50% no-repeat;border:none;height:19px;max-width:18px;padding:0;position:absolute;right:20px;top:20px;width:100%}.elements__delete:hover{cursor:pointer;opacity:.25;transition-duration:.5s}
-.elements__like{background:url(images/vector-like.1ad06e85f169668a1f36.svg) 50% no-repeat;border:none;height:19px;margin-left:16px;max-width:22px;padding:0;width:100%}.elements__like:hover{cursor:pointer;opacity:.5;transition-duration:.5s}
+.elements__wrapper-like{display:flex;flex-direction:column;margin:0}
+.elements__like{background:url(images/vector-like.1ad06e85f169668a1f36.svg) 50% no-repeat;border:none;height:19px;margin-bottom:3px;padding:0;width:22px}.elements__like:hover{cursor:pointer;opacity:.5;transition-duration:.5s}
 .elements__like_active{background:url(images/vector-like-active.dd6a61e81552be95f4b7.svg) 50% no-repeat}
+.elements__count-likes{color:#000;font-size:13px;font-weight:400;height:13px;line-height:16px;margin:0 auto;text-align:center;width:10px}
 .footer{margin:66px auto 60px}@media screen and (max-width:640px){.footer{margin:48px 0 36px 19px}}
 .footer__copy{color:#545454;font-size:18px;font-weight:400;line-height:22px;margin:0}@media screen and (max-width:320px){.footer__copy{font-size:14px;line-height:17px}}
 .popup{align-items:center;background:rgba(0,0,0,.5);display:flex;height:100%;justify-content:center;left:0;opacity:0;position:fixed;top:0;transition:visibility .5s,.5s linear;visibility:hidden;width:100%}
@@ -39,8 +42,8 @@
 .popup_img{background:rgba(0,0,0,.9)}
 .popup__card-image{box-sizing:border-box;max-height:75vh;max-width:75vw;width:100%}@media screen and (max-width:580px){.popup__card-image{height:299px;width:240px}}
 .popup__card-name{color:#fff;font-size:12px;font-weight:400;line-height:15px;margin:0;padding-top:4px}
-.error-message{color:red;font-size:12px;font-weight:400;line-height:15px;min-height:30px;opacity:0;padding-top:5px;visibility:hidden}
-.error-message_active{opacity:1;visibility:visible}
+.error-message{color:red;display:none;font-size:12px;font-weight:400;line-height:15px;min-height:30px;padding-top:5px}
+.error-message_active{display:block}
 
 
 /*# sourceMappingURL=main.css.map*/
