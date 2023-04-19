@@ -18,4 +18,4 @@
 * Webpack сборщик
 * Работа с API
 
-[Ссылка на сайт](https://rust007-91.github.io/mesto/index.html)
+[Ссылка на сайт](https://rust007-91.github.io/mesto/)
