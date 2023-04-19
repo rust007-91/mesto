@@ -84,21 +84,18 @@ const createCard = (cardData) => {
         popupWithFormConfirm.open();
     }
 
-    const handleAddLikeClick = (cardId) => {
+    const handleAddLikeClick = (cardId) => {        // Обработчик добавления лайка
         api.setApiLike(cardId)
             .then((res) => {
-                // card.setCardLike(res);
-                card.handleLike(res);
+                card.handleLikes(res);
             })
             .catch((err) => alert(err));
     }
 
-    const handleDeleteLikeClick = (cardId) => {
+    const handleDeleteLikeClick = (cardId) => {     // Обработчик удаления лайка
         api.deleteApiLike(cardId)
             .then((res) => {
-                // card.delCardLike();
-                console.log(res);
-                card.handleLike(res);
+                card.handleLikes(res);
             })
             .catch((err) => alert(err));
     }
@@ -108,7 +105,7 @@ const createCard = (cardData) => {
             handleCard: handleCardClick,
             handleDelete: handleDeleteIconClick,
             handleAddLike: handleAddLikeClick,
-            handleDelLike: handleDeleteLikeClick,
+            handleDeleteLike: handleDeleteLikeClick,
         },
         '#elements__card', userId
     );

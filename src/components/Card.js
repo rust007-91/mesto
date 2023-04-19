@@ -1,5 +1,5 @@
 class Card {
-    constructor({data, handleCard, handleDelete, handleAddLike, handleDelLike}, templateSelector, userId) {
+    constructor({data, handleCard, handleDelete, handleAddLike, handleDeleteLike}, templateSelector, userId) {
         this._likes = data.likes;
         this._link = data.link;
         this._name = data.name;
@@ -9,7 +9,7 @@ class Card {
         this._handleCardClick = handleCard;
         this._handleDeleteIconClick = handleDelete;
         this._handleAddLikeClick = handleAddLike;
-        this._handleDeleteLikeClick = handleDelLike;
+        this._handleDeleteLikeClick = handleDeleteLike;
         this._userId = userId;
     }
 
@@ -26,30 +26,16 @@ class Card {
         }
 
         // Слушатель на лайке
-        const likeIconElement = this._cardElement.querySelector('.elements__like');
-        likeIconElement.addEventListener('click', (evt) => {
-
+        this._likeIconElement = this._cardElement.querySelector('.elements__like');
+        this._likeIconElement.addEventListener('click', (evt) => {
             evt.target.classList.toggle('elements__like_active'); // Поставить лайк
-
-            // for(let i = 0; i <= this._likes.length; i++) {
-            //     if (this._userId === this._likes[i]._id) {
-            //         this._handleDeleteLikeClick(this.cardId);
-            //
-            //     } else {
-            //         this._handleAddLikeClick(this.cardId);
-            //     }
-            // }
-
-            if (this._checkLikes()) {
-                this._handleDeleteLikeClick(this.cardId);
+            // Вызов обработчика после проверки
+            if (this._checkLike()) {
+                this._handleDeleteLikeClick(this.cardId); // обработчик на удаление
             } else {
-                this._handleAddLikeClick(this.cardId);
+                this._handleAddLikeClick(this.cardId); // обработчик на добавление
             }
-
-
         });
-
-
 
         // Слушатель попап на карточке
         this._cardImage.addEventListener('click', () => {
@@ -57,22 +43,21 @@ class Card {
         });
     }
 
-    _checkLikes() {
-        // return this._likes.find((like) => like._id === this._userId);
-        return this._likes.forEach((like) => {
-            if (like._id === this._userId) {
-                return true;
-            } else {
-                return false;
-            }
+// Метод проверки наличия лайков
+    _checkLike() {
+        return this._likes.some((like) => {
+            return like._id === this._userId;
         })
-
     }
-
-    handleLike(card) {
-        this._likeArea = card.likes;
-        this._countLikes = this._cardElement.querySelector('.elements__count-likes');
-        (this._likeArea.length === 0) ? this._countLikes.textContent = '' : this._countLikes.textContent = this._likeArea.length;
+// Метод обаботки лайков
+    handleLikes(card) {
+        this._likes = card.likes; // записываем массив с сервера
+        // обновление лайков на странице
+        if (this._likes.length === 0) {
+            this._countLikes.textContent = '0';
+        } else {
+            this._countLikes.textContent = this._likes.length;
+        }
     }
 
 // Метод получения карточки
@@ -85,6 +70,7 @@ class Card {
 
         return cardElement;
     }
+
 
 // Метод наполнения и генерации карточки
     generateCard() {
@@ -99,6 +85,11 @@ class Card {
         this._cardImage.alt = this._name;
         this._cardTitle.textContent = this._name;
 
+        // Проверка маркера лайков перед рендером
+        if (this._checkLike()) {
+            const likeIconElement = this._cardElement.querySelector('.elements__like');
+            likeIconElement.classList.add('elements__like_active'); // Поставить лайк
+        }
         this._countLikes.textContent = this._likes.length; // вывод лайков на страницу
 
         this._setEventListenersCard();          // установка слушателей
@@ -110,17 +101,6 @@ class Card {
     deleteCard = () => {
         this._cardElement.remove();
     }
-
-    // setCardLike = (card) => {
-    //     const arrLikes = card.likes;
-    //     this._countLikes = this._cardElement.querySelector('.elements__count-likes');
-    //     this._countLikes.textContent = arrLikes.length;
-    // }
-    //
-    // delCardLike = () => {
-    //     this._countLikes = this._cardElement.querySelector('.elements__count-likes');
-    //     this._countLikes.textContent = '';
-    // }
 }
 
 export default Card;

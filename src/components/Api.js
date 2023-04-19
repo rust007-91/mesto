@@ -92,11 +92,6 @@ class Api {
         })
             .then((res) => this._getServStatus(res))
     }
-
-
-
-
-
 }
 
 
