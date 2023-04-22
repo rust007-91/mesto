@@ -1,24 +1,24 @@
 
 class UserInfo {
-    constructor({nameSelector, descSelector, avatarSelector}) {
-        this._nameSelector = document.querySelector(nameSelector);
-        this._descSelector = document.querySelector(descSelector);
-        this._avatarSelector = document.querySelector(avatarSelector);
+    constructor({nameSelector, descSelector, avatarSelector, }) {
+        this._name = document.querySelector(nameSelector);
+        this._description = document.querySelector(descSelector);
+        this._avatar = document.querySelector(avatarSelector);
     }
 
 // Метод подстановки данных при открытии формы edit
     getUserInfo() {
         const inputInfo = {
-            name: this._nameSelector.textContent,
-            desc: this._descSelector.textContent
+            heading: this._name.textContent,
+            desc: this._description.textContent
         };
         return inputInfo;
     }
 // Метод подстановки данных на страницу
     setUserInfo({name, about, avatar}) {
-        this._nameSelector.textContent = name;
-        this._descSelector.textContent = about;
-        this._avatarSelector.src = avatar;
+        this._name.textContent = name;
+        this._description.textContent = about;
+        this._avatar.src = avatar;
     }
 }
 
