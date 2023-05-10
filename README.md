@@ -7,7 +7,7 @@
 Взаимодействие с сервером через API.
 
 ### :hammer_and_wrench: Технологический стек:
- HTML
+* HTML
 * CSS
 * БЭМ
 * CSS Grid Layout
