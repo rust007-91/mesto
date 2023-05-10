@@ -7,7 +7,7 @@
 Взаимодействие с сервером через API.
 
 ### :hammer_and_wrench: Технологический стек:
-* HTML
+ HTML
 * CSS
 * БЭМ
 * CSS Grid Layout
@@ -26,3 +26,9 @@ Cтатус проекта:
 [Ссылка на макет](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0-1)
 
 [Ссылка на сайт](https://rust007-91.github.io/mesto/)
+
+Для развёртывания проекта необходимо:
+
+* Запустить терминал (например GitBash);
+* Выполнить команду:"git clone https://github.com/rust007-91/mesto.git"
+* Открыть проект в любом удобном редакторе кода.
